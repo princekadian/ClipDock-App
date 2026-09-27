@@ -1,5 +1,7 @@
 # Clip Dock
 
+<img src="logo.png" alt="Clip Dock logo" width="180" height="180" />
+
 Clip Dock is a Windows desktop application for downloading supported YouTube videos with a simple graphical interface. It uses the yt-dlp engine together with FFmpeg to analyze, select, and download video streams while keeping a local queue, history, and browser-extension bridge for faster workflow.
 
 ## Features
