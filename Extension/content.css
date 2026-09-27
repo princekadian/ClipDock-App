@@ -1,0 +1,339 @@
+:root {
+  --cd-page: #ffffff;
+  --cd-surface: #f7f7f8;
+  --cd-hover: #eeeeef;
+  --cd-text: #171717;
+  --cd-muted: #60646c;
+  --cd-border: #d8dade;
+  --cd-accent: #1769aa;
+  --cd-accent-hover: #115a94;
+  --cd-danger: #b42318;
+}
+
+html[dark],
+html[dark-theme] {
+  --cd-page: #212121;
+  --cd-surface: #282828;
+  --cd-hover: #353535;
+  --cd-text: #f1f1f1;
+  --cd-muted: #aaaaaa;
+  --cd-border: #434343;
+  --cd-accent: #3b8ac4;
+  --cd-accent-hover: #4c99d0;
+  --cd-danger: #ffb4ab;
+}
+
+.clipdock-youtube-button {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  flex: 0 0 auto;
+}
+
+.clipdock-action-button {
+  appearance: none;
+  border: 0;
+  border-radius: 18px;
+  min-height: 36px;
+  padding: 0 16px;
+  background: var(--cd-hover);
+  color: var(--cd-text);
+  font: 500 14px/36px Roboto, Arial, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.clipdock-action-button:hover {
+  background: var(--cd-border);
+}
+
+.clipdock-action-button:focus-visible {
+  outline: 2px solid var(--cd-accent);
+  outline-offset: 2px;
+}
+
+.clipdock-panel,
+.clipdock-panel * {
+  box-sizing: border-box;
+}
+
+.clipdock-panel {
+  position: fixed;
+  z-index: 2147483647;
+  max-height: min(620px, calc(100vh - 24px));
+  overflow: hidden;
+  border: 1px solid var(--cd-border);
+  border-radius: 8px;
+  background: var(--cd-page);
+  color: var(--cd-text);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.24);
+  font: 400 13px/1.4 Roboto, Arial, sans-serif;
+}
+
+.clipdock-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  padding: 8px 10px 8px 14px;
+  border-bottom: 1px solid var(--cd-border);
+}
+
+.clipdock-panel-header > div {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.clipdock-panel-header strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.clipdock-connection {
+  color: var(--cd-muted);
+  font-size: 11px;
+}
+
+.clipdock-connection i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 4px;
+  border-radius: 50%;
+  background: #3b8f62;
+}
+
+.clipdock-close {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--cd-muted);
+  font: 400 24px/30px Arial, sans-serif;
+  cursor: pointer;
+}
+
+.clipdock-close:hover,
+.clipdock-close:focus-visible {
+  background: var(--cd-hover);
+  color: var(--cd-text);
+  outline: none;
+}
+
+.clipdock-panel-body {
+  max-height: calc(min(620px, 100vh - 24px) - 51px);
+  overflow-y: auto;
+  scrollbar-color: var(--cd-muted) transparent;
+  scrollbar-width: thin;
+}
+
+.clipdock-video-summary {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 11px;
+  padding: 14px;
+  border-bottom: 1px solid var(--cd-border);
+}
+
+.clipdock-video-summary img {
+  width: 96px;
+  height: 54px;
+  border-radius: 3px;
+  object-fit: cover;
+  background: var(--cd-surface);
+}
+
+.clipdock-video-summary h3,
+.clipdock-notice h3,
+.clipdock-confirmation h3 {
+  margin: 0;
+  color: var(--cd-text);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.clipdock-video-summary h3 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.clipdock-video-summary p,
+.clipdock-notice p,
+.clipdock-confirmation p {
+  margin: 4px 0 0;
+  color: var(--cd-muted);
+  font-size: 12px;
+}
+
+.clipdock-quality-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px 7px;
+}
+
+.clipdock-quality-heading strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.clipdock-quality-heading span {
+  color: var(--cd-muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.clipdock-quality-list {
+  padding-bottom: 6px;
+}
+
+.clipdock-quality-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: 100%;
+  min-height: 41px;
+  align-items: center;
+  padding: 0 14px;
+  border: 0;
+  border-top: 1px solid var(--cd-border);
+  background: transparent;
+  color: var(--cd-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.clipdock-quality-row:hover:not(:disabled),
+.clipdock-quality-row:focus-visible:not(:disabled) {
+  background: var(--cd-hover);
+  outline: none;
+}
+
+.clipdock-quality-row strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.clipdock-quality-row span {
+  color: var(--cd-muted);
+  font-size: 12px;
+}
+
+.clipdock-quality-row:disabled {
+  color: var(--cd-muted);
+  cursor: default;
+  opacity: 0.58;
+}
+
+.clipdock-loading,
+.clipdock-notice,
+.clipdock-confirmation {
+  padding: 20px 18px;
+}
+
+.clipdock-loading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--cd-muted);
+}
+
+.clipdock-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--cd-border);
+  border-top-color: var(--cd-accent);
+  border-radius: 50%;
+  animation: clipdock-spin 0.8s linear infinite;
+}
+
+.clipdock-skeleton-list {
+  padding: 0 14px 14px;
+}
+
+.clipdock-skeleton-row {
+  height: 36px;
+  margin-top: 7px;
+  border-radius: 3px;
+  background: var(--cd-surface);
+}
+
+.clipdock-notice {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.clipdock-notice p {
+  max-width: 34ch;
+  line-height: 1.5;
+}
+
+.clipdock-notice-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.clipdock-primary,
+.clipdock-secondary {
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 4px;
+  font: 500 12px/32px Roboto, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.clipdock-primary {
+  border: 1px solid var(--cd-accent);
+  background: var(--cd-accent);
+  color: #ffffff;
+}
+
+.clipdock-primary:hover {
+  background: var(--cd-accent-hover);
+}
+
+.clipdock-secondary {
+  border: 1px solid var(--cd-border);
+  background: transparent;
+  color: var(--cd-text);
+}
+
+.clipdock-secondary:hover {
+  background: var(--cd-hover);
+}
+
+.clipdock-confirmation {
+  text-align: center;
+}
+
+.clipdock-check {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 10px;
+  place-items: center;
+  border-radius: 50%;
+  background: #2f7d55;
+  color: #ffffff;
+  font-size: 17px;
+}
+
+@keyframes clipdock-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clipdock-spinner { animation: none; }
+}
+
+@media (max-width: 700px) {
+  .clipdock-youtube-button { margin-left: 4px; }
+  .clipdock-action-button { min-height: 34px; padding: 0 12px; line-height: 34px; }
+}

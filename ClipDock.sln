@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{75C73E1F-1D86-46D6-8A35-848C7F87CD2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipDock.Core", "src\ClipDock.Core\ClipDock.Core.csproj", "{B5C42E56-FD83-4EE3-A1A0-F98DE530AB30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipDock.Infrastructure", "src\ClipDock.Infrastructure\ClipDock.Infrastructure.csproj", "{8175363B-FE76-481C-96AF-71A034DF9C11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipDock.App", "src\ClipDock.App\ClipDock.App.csproj", "{C8D4E9EB-6B3B-4EBD-BF50-63C16ED30C2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A5E30A9C-CA56-42CF-8953-A6183330C61C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipDock.Tests", "tests\ClipDock.Tests\ClipDock.Tests.csproj", "{2FEC83DC-6CF3-47A2-B9DB-3C9F1D9CC37A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5C42E56-FD83-4EE3-A1A0-F98DE530AB30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5C42E56-FD83-4EE3-A1A0-F98DE530AB30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5C42E56-FD83-4EE3-A1A0-F98DE530AB30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5C42E56-FD83-4EE3-A1A0-F98DE530AB30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8175363B-FE76-481C-96AF-71A034DF9C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8175363B-FE76-481C-96AF-71A034DF9C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8175363B-FE76-481C-96AF-71A034DF9C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8175363B-FE76-481C-96AF-71A034DF9C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D4E9EB-6B3B-4EBD-BF50-63C16ED30C2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8D4E9EB-6B3B-4EBD-BF50-63C16ED30C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8D4E9EB-6B3B-4EBD-BF50-63C16ED30C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D4E9EB-6B3B-4EBD-BF50-63C16ED30C2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FEC83DC-6CF3-47A2-B9DB-3C9F1D9CC37A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FEC83DC-6CF3-47A2-B9DB-3C9F1D9CC37A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FEC83DC-6CF3-47A2-B9DB-3C9F1D9CC37A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FEC83DC-6CF3-47A2-B9DB-3C9F1D9CC37A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B5C42E56-FD83-4EE3-A1A0-F98DE530AB30} = {75C73E1F-1D86-46D6-8A35-848C7F87CD2C}
+		{8175363B-FE76-481C-96AF-71A034DF9C11} = {75C73E1F-1D86-46D6-8A35-848C7F87CD2C}
+		{C8D4E9EB-6B3B-4EBD-BF50-63C16ED30C2D} = {75C73E1F-1D86-46D6-8A35-848C7F87CD2C}
+		{2FEC83DC-6CF3-47A2-B9DB-3C9F1D9CC37A} = {A5E30A9C-CA56-42CF-8953-A6183330C61C}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClipDock Extension Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header class="page-header">
+      <img src="icons/icon-48.png" alt="">
+      <div>
+        <h1>ClipDock browser integration</h1>
+        <p>Pair this extension with the Windows desktop application.</p>
+      </div>
+    </header>
+
+    <section aria-labelledby="pairing-title">
+      <div class="section-heading">
+        <h2 id="pairing-title">Pairing</h2>
+        <div id="status" class="status"><span></span><b>Not checked</b></div>
+      </div>
+      <ol>
+        <li>Open ClipDock on Windows.</li>
+        <li>Go to <strong>Settings</strong>, then <strong>Browser integration</strong>.</li>
+        <li>Copy the pairing token and paste it below.</li>
+      </ol>
+      <label for="token">Pairing token</label>
+      <div class="token-row">
+        <input id="token" type="password" autocomplete="off" spellcheck="false" aria-describedby="token-help">
+        <button id="save" type="button" class="primary">Save and test</button>
+      </div>
+      <label class="show-token"><input id="show-token" type="checkbox"> Show token</label>
+      <p id="token-help" class="help">The token is stored only in this browser profile and sent only to the local ClipDock app.</p>
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+    </section>
+
+    <section aria-labelledby="preferences-title">
+      <h2 id="preferences-title">Download preference</h2>
+      <label for="format">Default format</label>
+      <select id="format">
+        <option value="mp4">MP4</option>
+        <option value="mkv">MKV</option>
+        <option value="webm">WebM</option>
+      </select>
+      <p class="help">MP4 prioritizes broad device compatibility. ClipDock avoids re-encoding whenever possible.</p>
+    </section>
+
+    <section aria-labelledby="security-title">
+      <h2 id="security-title">Connection details</h2>
+      <dl>
+        <div><dt>Extension ID</dt><dd id="extension-id"></dd></div>
+        <div><dt>Connection</dt><dd>Local device only</dd></div>
+        <div><dt>Analytics</dt><dd>None</dd></div>
+      </dl>
+    </section>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

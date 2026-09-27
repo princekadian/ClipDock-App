@@ -1,0 +1,24 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="WindowBrush" Color="#191B1E" />
+    <SolidColorBrush x:Key="SurfaceBrush" Color="#22252A" />
+    <SolidColorBrush x:Key="SurfaceMutedBrush" Color="#2A2D32" />
+    <SolidColorBrush x:Key="InputBrush" Color="#25282D" />
+    <SolidColorBrush x:Key="ControlBrush" Color="#2B2F35" />
+    <SolidColorBrush x:Key="ControlHoverBrush" Color="#353A41" />
+    <SolidColorBrush x:Key="ControlPressedBrush" Color="#414750" />
+    <SolidColorBrush x:Key="SidebarBrush" Color="#121416" />
+    <SolidColorBrush x:Key="SidebarSelectedBrush" Color="#2B3037" />
+    <SolidColorBrush x:Key="SidebarTextBrush" Color="#E5E8EC" />
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="#F1F3F5" />
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#A9B0B8" />
+    <SolidColorBrush x:Key="BorderBrush" Color="#3B4047" />
+    <SolidColorBrush x:Key="AccentBrush" Color="#2E7DBA" />
+    <SolidColorBrush x:Key="AccentHoverBrush" Color="#3D8BC7" />
+    <SolidColorBrush x:Key="ErrorBrush" Color="#FFB4AB" />
+    <SolidColorBrush x:Key="ErrorSurfaceBrush" Color="#442925" />
+    <SolidColorBrush x:Key="ProgressTrackBrush" Color="#363A40" />
+    <SolidColorBrush x:Key="ScrollThumbBrush" Color="#555C65" />
+    <SolidColorBrush x:Key="ScrollThumbHoverBrush" Color="#747D88" />
+    <SolidColorBrush x:Key="WallpaperScrimBrush" Color="#D9191B1E" />
+</ResourceDictionary>

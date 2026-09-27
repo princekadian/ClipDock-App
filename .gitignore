@@ -1,0 +1,50 @@
+# .NET build output
+bin/
+obj/
+**/bin/
+**/obj/
+
+# IDE / editor metadata
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Local toolchains / generated workspace files
+.dotnet/
+artifacts/
+*.log
+*.tmp
+*.bak
+*.orig
+
+# OS / local junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Test / coverage output
+TestResults/
+coverage/
+*.trx
+
+# Local app data and generated runtime data
+**/App_Data/
+**/Logs/
+**/Data/
+
+# Browser extension packaging artifacts if generated locally
+Extension/dist/
+
+# Optional local secrets / environment files
+.env
+.env.*
+*.pfx
+*.p12
+*.pem
+*.key
+
+# Keep source installer files tracked, but ignore generated output
+installer/*.exe
