@@ -94,6 +94,15 @@ To compile the installer with Inno Setup:
 
 The installer output is written to `artifacts\installer`.
 
+## Build with GitHub Actions
+
+No local toolchain is needed: the `Build` workflow (`.github/workflows/build.yml`) builds, tests, and packages Clip Dock on a Windows runner.
+
+- **Run it manually:** fork the repo, open the **Actions** tab, choose **Build**, and click **Run workflow**.
+- **Automatic runs:** every push and pull request to `main` triggers a build.
+- **Download the output:** open the finished run and download the `ClipDock-Setup-…-x64` installer or the `…-portable` zip from the **Artifacts** section.
+- **Releases:** pushing a tag such as `v1.2.0` builds that version and attaches the installer and portable zip to a GitHub Release.
+
 ## How to run locally
 
 Run the WPF app from Visual Studio, or start the published executable:

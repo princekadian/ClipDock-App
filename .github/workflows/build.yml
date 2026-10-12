@@ -1,0 +1,106 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Determine version
+        id: version
+        shell: pwsh
+        run: |
+          if ($env:GITHUB_REF -like 'refs/tags/v*') {
+            $version = $env:GITHUB_REF_NAME.Substring(1)
+          } else {
+            [xml]$csproj = Get-Content 'src/ClipDock.App/ClipDock.App.csproj'
+            $version = ($csproj.Project.PropertyGroup | Where-Object { $_.Version } | Select-Object -First 1).Version
+          }
+          if ($version -notmatch '^\d+\.\d+\.\d+$') {
+            throw "Version '$version' must be in MAJOR.MINOR.PATCH form (e.g. tag v1.2.3)."
+          }
+          "version=$version" >> $env:GITHUB_OUTPUT
+          Write-Host "Building ClipDock $version"
+
+      - name: Restore
+        run: dotnet restore ClipDock.sln
+
+      - name: Build
+        run: dotnet build ClipDock.sln -c Release --no-restore
+
+      - name: Test
+        run: dotnet test ClipDock.sln -c Release --no-build --verbosity normal
+
+      - name: Publish self-contained app
+        shell: pwsh
+        run: >
+          dotnet publish src/ClipDock.App/ClipDock.App.csproj
+          -c Release -r win-x64 --self-contained true
+          -p:PublishReadyToRun=true -p:DebugType=None -p:DebugSymbols=false
+          -p:Version=${{ steps.version.outputs.version }}
+          -o artifacts/publish/win-x64
+
+      - name: Create portable zip
+        shell: pwsh
+        run: |
+          $portable = 'artifacts/portable/ClipDock'
+          New-Item -ItemType Directory -Force $portable | Out-Null
+          Copy-Item artifacts/publish/win-x64/* $portable -Recurse
+          Copy-Item Extension "$portable/Extension" -Recurse
+          Compress-Archive -Path "$portable/*" -DestinationPath "artifacts/ClipDock-${{ steps.version.outputs.version }}-win-x64-portable.zip"
+
+      - name: Install Inno Setup
+        shell: pwsh
+        run: |
+          if (-not (Get-Command iscc -ErrorAction SilentlyContinue) -and
+              -not (Test-Path "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe")) {
+            choco install innosetup -y --no-progress
+          }
+
+      - name: Build installer
+        shell: pwsh
+        run: |
+          $iscc = (Get-Command iscc -ErrorAction SilentlyContinue).Source
+          if (-not $iscc) { $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" }
+          $publishDir = (Resolve-Path artifacts/publish/win-x64).Path
+          & $iscc "/DAppVersion=${{ steps.version.outputs.version }}" "/DPublishDir=$publishDir" installer/ClipDock.iss
+          if ($LASTEXITCODE -ne 0) { throw "ISCC failed with exit code $LASTEXITCODE" }
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: ClipDock-Setup-${{ steps.version.outputs.version }}-x64
+          path: artifacts/installer/*.exe
+
+      - name: Upload portable zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: ClipDock-${{ steps.version.outputs.version }}-win-x64-portable
+          path: artifacts/*.zip
+
+      - name: Publish GitHub release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            artifacts/installer/*.exe
+            artifacts/*.zip
