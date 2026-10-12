@@ -1,5 +1,10 @@
 #define AppName "ClipDock"
-#define AppVersion "1.0.0"
+#ifndef AppVersion
+  #define AppVersion "1.0.0"
+#endif
+#ifndef PublishDir
+  #define PublishDir "..\artifacts\publish\1.0.0-win-x64-final"
+#endif
 #define AppPublisher "ClipDock"
 #define AppExeName "ClipDock.exe"
 
@@ -42,7 +47,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional shortcuts:"; Flags: unchecked
 
 [Files]
-Source: "..\artifacts\publish\1.0.0-win-x64-final\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#PublishDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\Extension\*"; DestDir: "{app}\Extension"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
